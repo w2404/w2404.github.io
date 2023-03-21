@@ -3,25 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Web Speech API Demo</title>
+  <script src="./lib/jquery-3.5.1.min.js"></script>
+  <script src="./lib/main.js"></script>
 </head>
 <body>
   <h1>Web Speech API Demo</h1>
   <p>请允许访问麦克风，并开始说话，将会在控制台中输出语音识别结果。</p>
-  <script>
-    // 创建一个SpeechRecognition对象
-    var recognition = new webkitSpeechRecognition();
-
-    // 设置语音识别语言为中文
-    recognition.lang = 'zh-CN';
-
-    // 开始录音
-    recognition.start();
-
-    // 监听语音识别结果
-    recognition.onresult = function(event) {
-      var result = event.results[event.resultIndex][0].transcript;
-      console.log('语音识别结果：' + result);
-    }
-  </script>
+  <div id=m></div>
 </body>
 </html>
