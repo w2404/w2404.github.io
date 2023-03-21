@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>语音识别示例</title>
+</head>
+<body>
+    <button onclick="startRecognition()">开始录音</button>
+    <div id="result"></div>
+    <script>
+        function startRecognition() {
+            // 创建SpeechRecognition对象
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = 'zh-CN'; // 设置语言为中文
+            recognition.continuous = false; // 设置是否连续识别
+            recognition.interimResults = false; // 设置是否返回中间结果
+
+            // 开始识别
+            recognition.start();
+
+            // 监听识别结果
+            recognition.onresult = function(event) {
+                var result = event.results[0][0].transcript;
+                document.getElementById('result').innerHTML = result;
+            };
+
+            // 监听识别错误
+            recognition.onerror = function(event) {
+                console.error(event.error);
+            };
+
+            // 监听识别结束
+            recognition.onend = function() {
+                console.log('识别结束');
+            };
+        }
+    </script>
+</body>
+</html>
